@@ -62,18 +62,27 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
+/* 0 */,
+/* 1 */,
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
+/* styles */
+__vue_styles__.push(__webpack_require__(3)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(4)
+
 /* template */
-var __vue_template__ = __webpack_require__(1)
+var __vue_template__ = __webpack_require__(5)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -85,9 +94,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/components/HelloWorld.vue"
+__vue_options__.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/components/topheader.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-b023117c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -102,35 +112,76 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, exports) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('text', {
-    staticClass: ["message"]
-  }, [_vm._v("姚稳，测试for weex环境")])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+module.exports = {
+  "topheader": {
+    "backgroundColor": "#FF0000",
+    "paddingTop": "10",
+    "paddingRight": "10",
+    "paddingBottom": "10",
+    "paddingLeft": "10"
+  },
+  "top-text": {
+    "color": "#FFFFFF",
+    "fontSize": "46",
+    "textAlign": "center",
+    "lines": 3
+  }
+}
 
 /***/ }),
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _HelloWorld = __webpack_require__(0);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+//
 
-var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
+exports.default = {};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["topheader"]
+  }, [_c('text', {
+    staticClass: ["top-text"]
+  }, [_vm._v(" P7 自定义组件和text组件2,P7 自定义组件和text组件,3,P7 自定义组件和text组件,4P7 自定义组件和text组件")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 6 */,
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _topheader = __webpack_require__(2);
+
+var _topheader2 = _interopRequireDefault(_topheader);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_HelloWorld2.default.el = '#root';
-new Vue(_HelloWorld2.default);
+_topheader2.default.el = '#root';
+new Vue(_topheader2.default);
 
 /***/ })
 /******/ ]);
