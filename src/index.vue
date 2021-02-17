@@ -1,10 +1,19 @@
 <template>
   <div class="wrapper">
-    <div>
-      <input class="textInput"  :autofocus=true type="text" placeholder="随便写点什么"/>
-    </div>
+    <image class="testImage" resize="contain" src="https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png" />
     <text class="greeting">Hello world 2</text>
+
+  <div>
+    <video class="video" :src="src" autoplay controls 
+      @start="onstart"
+      @pause="onpause"
+      @finish="onfinish"
+      @fail="onfail"/>
+      <text class="info"> state : {{ state }}</text>
   </div>
+
+  </div>
+
 </template>
 
 
@@ -18,14 +27,25 @@
     color: #41B883;
   }
 
-  .textInput {
-    height: 80px;
-    padding: 10px;
-    font-size: 32px;
-    border-bottom-width: 1px;
-    margin-left: 10px;
-    margin-right: 10px;
+  .testImage {
+    width: 720px;
+    height: 100px;
+    background-color: red;
   }
+
+  .video {
+    width: 630px;
+    height: 350px;
+    margin-top: 40px;
+    margin-left: 60px;
+  }
+
+  .info {
+    margin-top: 40px;
+    font-size: 40px;
+    text-align: center;
+  }
+
 </style>
 
 
@@ -33,7 +53,7 @@
 <script>
 import HelloWorld from '@/components/HelloWorld'
 
-import topheader from './components/topheader'
+
 
 var modal = weex.requireModule('modal');
 
@@ -41,20 +61,30 @@ export default {
   name: 'App',
   components: {
     HelloWorld,
-    topheader
   },
-  created() {
-    console.log("页面初始化中 yaowen");
-    modal.toast({
-        message: '页面初始化succ2 ',
-        duration: 3
-    });
-  },
+
   data () {
     return {
       // vue的图标
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
+      state: '---',
+      src: 'http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4'
     }
+  },
+
+  methods: {
+    onstart (event){
+      this.state = "onstart"
+    },
+    onpause (event){
+      this.state = "onpause"
+    },
+    onfinish (event){
+      this.state = "onfinish"
+    },
+    onfail (event){
+      this.state = "onfail"
+    },
   }
 }
 </script>
