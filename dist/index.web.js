@@ -21630,7 +21630,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.greeting[data-v-28e1950c] {\n  text-align: center;\n  margin-top: 70px;\n  font-size: 50px;\n  color: #41B883;\n}\n.panel[data-v-28e1950c] {\n  width: 600px;\n  height: 250px;\n  margin-left: 75px;\n  margin-top: 35px;\n  margin-bottom: 35px;\n  -ms-flex-pack: center;\n      justify-content: center;\n  text-align: center;\n  border-color: red;\n  border-width: 1px;\n  background-color: rgba(162, 217, 192, 0.2);\n}\n.list-text[data-v-28e1950c] {\n    border-color: blue;\n    border-width: 1px;\n    text-align: center;\n}\n.indicator[data-v-28e1950c] {\n  font-size: 42px;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.greeting[data-v-28e1950c] {\n  text-align: center;\n  margin-top: 70px;\n  font-size: 50px;\n  color: #41b883;\n}\n.panel[data-v-28e1950c] {\n  width: 600px;\n  height: 250px;\n  margin-left: 75px;\n  margin-top: 35px;\n  margin-bottom: 35px;\n  -ms-flex-pack: center;\n      justify-content: center;\n  text-align: center;\n  border-color: red;\n  border-width: 1px;\n  background-color: rgba(162, 217, 192, 0.2);\n}\n.list-text[data-v-28e1950c] {\n  border-color: blue;\n  border-width: 1px;\n  text-align: center;\n}\n.indicator[data-v-28e1950c] {\n  font-size: 42px;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -21652,7 +21652,11 @@ var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var modal = weex.requireModule('modal'); //
+var modal = weex.requireModule("modal"); //
+//
+//
+//
+//
 //
 //
 //
@@ -21710,7 +21714,7 @@ var modal = weex.requireModule('modal'); //
 //
 
 exports.default = {
-  name: 'App',
+  name: "App",
   components: {
     HelloWorld: _HelloWorld2.default
   },
@@ -21718,10 +21722,10 @@ exports.default = {
   data: function data() {
     return {
       // vue的图标
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
+      logo: "https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png",
       lists: [1, 2, 3, 4, 5, 6],
-      showLoading: 'hide',
-      refreshShow: 'hide'
+      showLoading: "hide",
+      refreshShow: "hide"
     };
   },
 
@@ -21730,7 +21734,7 @@ exports.default = {
       var _this = this;
 
       modal.toast({
-        message: 'load more',
+        message: "load more",
         duration: 1
       });
 
@@ -21746,36 +21750,36 @@ exports.default = {
       var _this2 = this;
 
       modal.toast({
-        message: 'loading',
+        message: "loading",
         duration: 1
       });
-      this.showLoading = 'show';
+      this.showLoading = "show";
       setTimeout(function () {
         var length = _this2.lists.length;
         console.log("进入到了 loading 组件的定时函数中");
         for (var i = length; i < length + 4; i++) {
           _this2.lists.push(i + 1);
         }
-        _this2.showLoading = 'hide';
+        _this2.showLoading = "hide";
       }, 1500);
     },
     onrefresh: function onrefresh(event) {
       var _this3 = this;
 
       modal.toast({
-        message: 'refreshing',
+        message: "refreshing",
         duration: 1
       });
       this.refreshShow = "show";
       setTimeout(function () {
         console.log("进入到了  onrefresh 组件的定时函数中");
         _this3.lists = [1, 2, 3, 4, 5, 6];
-        _this3.refreshShow = 'hide';
+        _this3.refreshShow = "hide";
       }, 1500);
     },
     onpullingdown: function onpullingdown(event) {
       modal.toast({
-        message: 'on pulling down',
+        message: "on pulling down",
         duration: 1
       });
     }
