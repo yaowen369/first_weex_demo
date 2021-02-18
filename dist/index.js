@@ -141,20 +141,12 @@ module.exports = {
   "wrapper": {
     "justifyContent": "center"
   },
-  "button": {
-    "width": "450",
-    "marginTop": "30",
-    "marginLeft": "150",
-    "paddingTop": "20",
-    "paddingBottom": "20",
+  "web": {
+    "marginLeft": "75",
+    "width": "600",
+    "height": "750",
     "borderWidth": "2",
-    "borderColor": "#dddddd",
-    "backgroundColor": "#f5f5f5"
-  },
-  "text": {
-    "fontSize": "60",
-    "color": "#666666",
-    "textAlign": "center"
+    "borderColor": "#41B883"
   }
 }
 
@@ -196,15 +188,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule("modal");
 
@@ -213,23 +196,21 @@ exports.default = {
   components: {},
 
   data: function data() {
-    return {
-      // vue的图标
-
-      imageList: [{
-        src: "https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg"
-      }, {
-        src: "https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg"
-      }, {
-        src: "https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg"
-      }]
-    };
+    return {};
   },
 
   methods: {
     onchange: function onchange(index) {
       // modal.toast({message:index});
-    }
+    },
+    onstart: function onstart() {
+      modal.toast({ message: 'onstart() ' });
+    },
+
+    onfinish: function onfinish(event) {
+      modal.toast({ message: 'onfinish() ' });
+    },
+    onerror: function onerror(event) {}
   }
 };
 
@@ -238,19 +219,20 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
-  }, [_c('a', {
-    staticClass: ["button"],
+  }, [_c('web', {
+    staticClass: ["web"],
     attrs: {
-      "href": "http://192.168.3.3:8081/src/lunbotu.js"
+      "src": "https://www.cnblogs.com/yaoxiaowen"
+    },
+    on: {
+      "pagestart": _vm.onstart,
+      "pagefinish": _vm.onfinish,
+      "error": _vm.onerror
     }
-  }, [_c('text', {
-    staticClass: ["text"]
-  }, [_vm._v("跳转轮播图2")])])])
-}]}
+  })])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })
