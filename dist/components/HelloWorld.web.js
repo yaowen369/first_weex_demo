@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -21121,9 +21121,7 @@ module.exports = weex;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 7 */,
-/* 8 */,
-/* 9 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -21131,7 +21129,7 @@ var Component = __webpack_require__(1)(
   /* script */
   null,
   /* template */
-  __webpack_require__(10),
+  __webpack_require__(8),
   /* styles */
   null,
   /* scopeId */
@@ -21163,7 +21161,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -21182,13 +21180,10 @@ if (false) {
 }
 
 /***/ }),
+/* 9 */,
+/* 10 */,
 /* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21206,7 +21201,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _weexVueRender2.default.init(_vue2.default);
 
-var App = __webpack_require__(9);
+var App = __webpack_require__(7);
 new _vue2.default(_vue2.default.util.extend({ el: '#root' }, App));
 
 /***/ })

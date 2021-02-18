@@ -189,20 +189,25 @@ module.exports = {
     "fontSize": "50",
     "color": "#41B883"
   },
-  "testImage": {
-    "width": "720",
-    "height": "100",
-    "backgroundColor": "#FF0000"
+  "panel": {
+    "width": "600",
+    "height": "250",
+    "marginLeft": "75",
+    "marginTop": "35",
+    "marginBottom": "35",
+    "justifyContent": "center",
+    "textAlign": "center",
+    "borderColor": "#FF0000",
+    "borderWidth": "1",
+    "backgroundColor": "rgba(162,217,192,0.2)"
   },
-  "video": {
-    "width": "630",
-    "height": "350",
-    "marginTop": "40",
-    "marginLeft": "60"
+  "list-text": {
+    "borderColor": "#0000FF",
+    "borderWidth": "1",
+    "textAlign": "center"
   },
-  "info": {
-    "marginTop": "40",
-    "fontSize": "40",
+  "indicator": {
+    "fontSize": "42",
     "textAlign": "center"
   }
 }
@@ -276,6 +281,10 @@ var modal = weex.requireModule('modal'); //
 //
 //
 //
+//
+//
+//
+//
 
 exports.default = {
   name: 'App',
@@ -287,24 +296,65 @@ exports.default = {
     return {
       // vue的图标
       logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
-      state: '---',
-      src: 'http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4'
+      lists: [1, 2, 3, 4, 5, 6],
+      showLoading: 'hide',
+      refreshShow: 'hide'
     };
   },
 
-
   methods: {
-    onstart: function onstart(event) {
-      this.state = "onstart";
+    fetch: function fetch(event) {
+      var _this = this;
+
+      modal.toast({
+        message: 'load more',
+        duration: 1
+      });
+
+      setTimeout(function () {
+        var length = _this.lists.length;
+        console.log("进入到了 定时函数当中");
+        for (var i = length; i < length + 4; i++) {
+          _this.lists.push(i + 1);
+        }
+      }, 800);
     },
-    onpause: function onpause(event) {
-      this.state = "onpause";
+    onloading: function onloading(event) {
+      var _this2 = this;
+
+      modal.toast({
+        message: 'loading',
+        duration: 1
+      });
+      this.showLoading = 'show';
+      setTimeout(function () {
+        var length = _this2.lists.length;
+        console.log("进入到了 loading 组件的定时函数中");
+        for (var i = length; i < length + 4; i++) {
+          _this2.lists.push(i + 1);
+        }
+        _this2.showLoading = 'hide';
+      }, 1500);
     },
-    onfinish: function onfinish(event) {
-      this.state = "onfinish";
+    onrefresh: function onrefresh(event) {
+      var _this3 = this;
+
+      modal.toast({
+        message: 'refreshing',
+        duration: 1
+      });
+      this.refreshShow = "show";
+      setTimeout(function () {
+        console.log("进入到了  onrefresh 组件的定时函数中");
+        _this3.lists = [1, 2, 3, 4, 5, 6];
+        _this3.refreshShow = 'hide';
+      }, 1500);
     },
-    onfail: function onfail(event) {
-      this.state = "onfail";
+    onpullingdown: function onpullingdown(event) {
+      modal.toast({
+        message: 'on pulling down',
+        duration: 1
+      });
     }
   }
 };
@@ -316,30 +366,39 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
-  }, [_c('image', {
-    staticClass: ["testImage"],
+  }, [_c('list', [_c('refresh', {
+    staticClass: ["refresh"],
     attrs: {
-      "resize": "contain",
-      "src": "https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png"
-    }
-  }), _c('text', {
-    staticClass: ["greeting"]
-  }, [_vm._v("Hello world 2")]), _c('div', [_c('video', {
-    staticClass: ["video"],
-    attrs: {
-      "src": _vm.src,
-      "autoplay": "",
-      "controls": ""
+      "display": _vm.refreshShow
     },
     on: {
-      "start": _vm.onstart,
-      "pause": _vm.onpause,
-      "finish": _vm.onfinish,
-      "fail": _vm.onfail
+      "refresh": _vm.onrefresh,
+      "pullingdown": _vm.onpullingdown
     }
-  }), _c('text', {
-    staticClass: ["info"]
-  }, [_vm._v(" state : " + _vm._s(_vm.state))])])])
+  }, [_c('text', {
+    staticClass: ["indicator"]
+  }, [_vm._v("refreshiii...")])]), _vm._l((_vm.lists), function(num) {
+    return _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('div', {
+      staticClass: ["panel"]
+    }, [_c('text', {
+      staticClass: ["list-text"]
+    }, [_vm._v(_vm._s(num))])])])
+  }), _c('loading', {
+    staticClass: ["loading"],
+    attrs: {
+      "display": _vm.showLoading
+    },
+    on: {
+      "loading": _vm.onloading
+    }
+  }, [_c('text', {
+    staticClass: ["indicator"]
+  }, [_vm._v("loadingiii...")])])], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

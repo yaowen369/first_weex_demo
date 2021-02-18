@@ -21122,6 +21122,65 @@ module.exports = weex;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(8),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/components/HelloWorld.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] HelloWorld.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f4ca195a", Component.options)
+  } else {
+    hotAPI.reload("data-v-f4ca195a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('text', {
+    staticClass: "message",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("姚稳，测试for weex环境")])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-f4ca195a", module.exports)
+  }
+}
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 /*
@@ -21203,7 +21262,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -21222,7 +21281,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(14)
+var listToStyles = __webpack_require__(11)
 
 /*
 type StyleObject = {
@@ -21431,150 +21490,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  null,
-  /* template */
-  __webpack_require__(10),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/components/HelloWorld.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] HelloWorld.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f4ca195a", Component.options)
-  } else {
-    hotAPI.reload("data-v-f4ca195a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('text', {
-    staticClass: "message",
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle(undefined))
-  }, [_vm._v("姚稳，测试for weex环境")])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-f4ca195a", module.exports)
-  }
-}
-
-/***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(12)
-}
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(15),
-  /* template */
-  __webpack_require__(16),
-  /* styles */
-  injectStyle,
-  /* scopeId */
-  "data-v-0d0f7f9f",
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/components/topheader.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] topheader.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0d0f7f9f", Component.options)
-  } else {
-    hotAPI.reload("data-v-0d0f7f9f", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(13);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(8)("2a4cef88", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d0f7f9f\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topheader.vue", function() {
-     var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d0f7f9f\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topheader.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(7)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.topheader[data-v-0d0f7f9f] {\n    background-color: red;\n    padding: 10px;\n}\n.top-text[data-v-0d0f7f9f]{\n    color:white;\n    font-size: 46px;\n    text-align: center;\n    lines:3\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 14 */
 /***/ (function(module, exports) {
 
 /**
@@ -21607,49 +21523,11 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {};
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "topheader",
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle(undefined))
-  }, [_c('text', {
-    staticClass: "top-text",
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle(undefined))
-  }, [_vm._v(" P7 自定义组件和text组件2,P7 自定义组件和text组件,3,P7 自定义组件和text组件,4P7 自定义组件和text组件")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0d0f7f9f", module.exports)
-  }
-}
-
-/***/ }),
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
 /* 17 */,
 /* 18 */,
 /* 19 */
@@ -21728,7 +21606,7 @@ var content = __webpack_require__(22);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(8)("85fc7aae", content, false, {});
+var update = __webpack_require__(10)("85fc7aae", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -21747,12 +21625,12 @@ if(false) {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(false);
+exports = module.exports = __webpack_require__(9)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.greeting[data-v-28e1950c] {\n  text-align: center;\n  margin-top: 70px;\n  font-size: 50px;\n  color: #41B883;\n}\n.textInput[data-v-28e1950c] {\n  height: 80px;\n  padding: 10px;\n  font-size: 32px;\n  border-bottom-width: 1px;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.greeting[data-v-28e1950c] {\n  text-align: center;\n  margin-top: 70px;\n  font-size: 50px;\n  color: #41B883;\n}\n.panel[data-v-28e1950c] {\n  width: 600px;\n  height: 250px;\n  margin-left: 75px;\n  margin-top: 35px;\n  margin-bottom: 35px;\n  -ms-flex-pack: center;\n      justify-content: center;\n  text-align: center;\n  border-color: red;\n  border-width: 1px;\n  background-color: rgba(162, 217, 192, 0.2);\n}\n.list-text[data-v-28e1950c] {\n    border-color: blue;\n    border-width: 1px;\n    text-align: center;\n}\n.indicator[data-v-28e1950c] {\n  font-size: 42px;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -21768,16 +21646,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _HelloWorld = __webpack_require__(9);
+var _HelloWorld = __webpack_require__(7);
 
 var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
 
-var _topheader = __webpack_require__(11);
-
-var _topheader2 = _interopRequireDefault(_topheader);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var modal = weex.requireModule('modal'); //
 //
 //
 //
@@ -21810,27 +21685,100 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-
-var modal = weex.requireModule('modal');
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   name: 'App',
   components: {
-    HelloWorld: _HelloWorld2.default,
-    topheader: _topheader2.default
+    HelloWorld: _HelloWorld2.default
   },
-  created: function created() {
-    console.log("页面初始化中 yaowen");
-    modal.toast({
-      message: '页面初始化succ2 ',
-      duration: 3
-    });
-  },
+
   data: function data() {
     return {
       // vue的图标
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
+      lists: [1, 2, 3, 4, 5, 6],
+      showLoading: 'hide',
+      refreshShow: 'hide'
     };
+  },
+
+  methods: {
+    fetch: function fetch(event) {
+      var _this = this;
+
+      modal.toast({
+        message: 'load more',
+        duration: 1
+      });
+
+      setTimeout(function () {
+        var length = _this.lists.length;
+        console.log("进入到了 定时函数当中");
+        for (var i = length; i < length + 4; i++) {
+          _this.lists.push(i + 1);
+        }
+      }, 800);
+    },
+    onloading: function onloading(event) {
+      var _this2 = this;
+
+      modal.toast({
+        message: 'loading',
+        duration: 1
+      });
+      this.showLoading = 'show';
+      setTimeout(function () {
+        var length = _this2.lists.length;
+        console.log("进入到了 loading 组件的定时函数中");
+        for (var i = length; i < length + 4; i++) {
+          _this2.lists.push(i + 1);
+        }
+        _this2.showLoading = 'hide';
+      }, 1500);
+    },
+    onrefresh: function onrefresh(event) {
+      var _this3 = this;
+
+      modal.toast({
+        message: 'refreshing',
+        duration: 1
+      });
+      this.refreshShow = "show";
+      setTimeout(function () {
+        console.log("进入到了  onrefresh 组件的定时函数中");
+        _this3.lists = [1, 2, 3, 4, 5, 6];
+        _this3.refreshShow = 'hide';
+      }, 1500);
+    },
+    onpullingdown: function onpullingdown(event) {
+      modal.toast({
+        message: 'on pulling down',
+        duration: 1
+      });
+    }
   }
 };
 
@@ -21843,20 +21791,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "wrapper",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('div', [_c('input', {
-    staticClass: "textInput",
+  }, [_c('list', [_c('refresh', {
+    staticClass: "refresh",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
     attrs: {
-      "autofocus": true,
-      "type": "text",
-      "placeholder": "随便写点什么"
+      "display": _vm.refreshShow
+    },
+    on: {
+      "refresh": _vm.onrefresh,
+      "pullingdown": _vm.onpullingdown
     }
-  })]), _vm._v(" "), _c('text', {
-    staticClass: "greeting",
+  }, [_c('text', {
+    staticClass: "indicator",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_vm._v("Hello world 2")])])
+  }, [_vm._v("refreshiii...")])]), _vm._v(" "), _vm._l((_vm.lists), function(num) {
+    return _c('cell', [_c('div', {
+      staticClass: "panel",
+      staticStyle: _vm.$processStyle(undefined),
+      style: (_vm.$processStyle(undefined))
+    }, [_c('text', {
+      staticClass: "list-text",
+      staticStyle: _vm.$processStyle(undefined),
+      style: (_vm.$processStyle(undefined))
+    }, [_vm._v(_vm._s(num))])])])
+  }), _vm._v(" "), _c('loading', {
+    staticClass: "loading",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    attrs: {
+      "display": _vm.showLoading
+    },
+    on: {
+      "loading": _vm.onloading
+    }
+  }, [_c('text', {
+    staticClass: "indicator",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("loadingiii...")])])], 2)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

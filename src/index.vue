@@ -1,23 +1,23 @@
 <template>
   <div class="wrapper">
-    <image class="testImage" resize="contain" src="https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png" />
-    <text class="greeting">Hello world 2</text>
+    <!-- <text class="greeting">Hello world 2</text> -->
 
-  <div>
-    <video class="video" :src="src" autoplay controls 
-      @start="onstart"
-      @pause="onpause"
-      @finish="onfinish"
-      @fail="onfail"/>
-      <text class="info"> state : {{ state }}</text>
-  </div>
-
+    <list >
+      <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshShow">
+    <text class="indicator">refreshiii...</text>
+      </refresh>  
+      <cell v-for="num in lists" >
+          <div class="panel">
+            <text class="list-text">{{ num }}</text>
+          </div>
+      </cell>
+      <loading class="loading" @loading="onloading" :display="showLoading">
+        <text class="indicator">loadingiii...</text>
+      </loading>
+    </list>
   </div>
 
 </template>
-
-
-
 
 <style scoped>
   .greeting {
@@ -27,25 +27,29 @@
     color: #41B883;
   }
 
-  .testImage {
-    width: 720px;
-    height: 100px;
-    background-color: red;
+  .panel {
+    width: 600px;
+    height: 250px;
+    margin-left: 75px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    justify-content: center;
+    text-align: center;
+    border-color: red;
+    border-width: 1px;
+    background-color: rgba(162, 217, 192, 0.2);
   }
 
-  .video {
-    width: 630px;
-    height: 350px;
-    margin-top: 40px;
-    margin-left: 60px;
+  .list-text {
+      border-color: blue;
+      border-width: 1px;
+      text-align: center;
   }
 
-  .info {
-    margin-top: 40px;
-    font-size: 40px;
+  .indicator {
+    font-size: 42px;
     text-align: center;
   }
-
 </style>
 
 
@@ -53,9 +57,7 @@
 <script>
 import HelloWorld from '@/components/HelloWorld'
 
-
-
-var modal = weex.requireModule('modal');
+const modal = weex.requireModule('modal');
 
 export default {
   name: 'App',
@@ -67,24 +69,59 @@ export default {
     return {
       // vue的图标
       logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
-      state: '---',
-      src: 'http://flv2.bn.netease.com/videolib3/1611/01/XGqSL5981/SD/XGqSL5981-mobile.mp4'
+      lists:[1, 2, 3, 4, 5, 6],
+      showLoading:'hide',
+      refreshShow:'hide'
     }
   },
-
   methods: {
-    onstart (event){
-      this.state = "onstart"
+    fetch(event) {
+      modal.toast({
+        message: 'load more',
+        duration:1
+      });
+
+      setTimeout(()=>{
+        const length = this.lists.length;
+        console.log("进入到了 定时函数当中");
+        for (let i=length; i<length+4; i++){
+          this.lists.push(i+1);
+        }
+      }, 800);
     },
-    onpause (event){
-      this.state = "onpause"
+    onloading(event){
+        modal.toast({
+        message: 'loading',
+        duration:1
+      });
+      this.showLoading='show';
+      setTimeout(()=>{
+        const length = this.lists.length;
+        console.log("进入到了 loading 组件的定时函数中");
+        for (let i=length; i<length+4; i++){
+          this.lists.push(i+1);
+        }
+        this.showLoading='hide'
+      }, 1500);
     },
-    onfinish (event){
-      this.state = "onfinish"
+    onrefresh(event){
+       modal.toast({
+        message: 'refreshing',
+        duration:1
+      });
+      this.refreshShow="show";
+      setTimeout(()=>{
+        console.log("进入到了  onrefresh 组件的定时函数中");
+        this.lists = [1, 2, 3, 4, 5, 6];
+        this.refreshShow='hide'
+      }, 1500);
     },
-    onfail (event){
-      this.state = "onfail"
-    },
+    onpullingdown(event){
+       modal.toast({
+        message: 'on pulling down',
+        duration:1
+      });
+    }
   }
 }
 </script>
