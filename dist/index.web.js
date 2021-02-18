@@ -21573,7 +21573,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.panel[data-v-28e1950c] {\n  width: 600px;\n  height: 250px;\n  margin-left: 75px;\n  margin-top: 35px;\n  margin-bottom: 35px;\n  -ms-flex-pack: center;\n      justify-content: center;\n  text-align: center;\n  border-color: red;\n  border-width: 1px;\n  background-color: rgba(162, 217, 192, 0.2);\n}\n.list-text[data-v-28e1950c] {\n  border-color: blue;\n  border-width: 1px;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.image[data-v-28e1950c]{\n  width: 700px;\n  height: 700px;\n}\n.slider[data-v-28e1950c] {\n  margin-top: 25px;\n  margin-left: 25px;\n  width: 700px;\n  height: 700px;\n  border-width: 2px;\n  border-style: solid;\n  border-color: #41B883;\n}\n.frame[data-v-28e1950c] {\n  width: 700px;\n  height: 700px;\n  position: relative;\n}\n", ""]);
 
 // exports
 
@@ -21625,43 +21625,20 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 var modal = weex.requireModule("modal");
-var stream = weex.requireModule("stream");
 
 exports.default = {
   name: "App",
-  components: {
-    HelloWorld: HelloWorld
-  },
+  components: {},
 
   data: function data() {
     return {
       // vue的图标
 
-      lists: []
+      imageList: [{ src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg' }]
     };
   },
-  created: function created() {
-    var _this = this;
 
-    var url = "https://autumnfish.cn/api/joke/list?num=8";
-
-    this.getNews(url, function (res) {
-      modal.toast({ message: '请求成功' });
-      _this.lists = res.jokes;
-      console.log(res.jokes);
-    });
-  },
-
-
-  methods: {
-    getNews: function getNews(url, callback) {
-      return stream.fetch({
-        method: 'GET',
-        type: 'json',
-        url: url
-      }, callback);
-    }
-  }
+  methods: {}
 };
 
 /***/ }),
@@ -21673,17 +21650,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "wrapper",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('list', _vm._l((_vm.lists), function(num) {
-    return _c('cell', [_c('div', {
-      staticClass: "panel",
+  }, [_c('slider', {
+    staticClass: "slider",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    attrs: {
+      "interval": "3000",
+      "auto-play": "true"
+    }
+  }, _vm._l((_vm.imageList), function(img) {
+    return _c('div', {
+      staticClass: "frame",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('text', {
-      staticClass: "list-text",
+    }, [_c('image', {
+      staticClass: "image",
       staticStyle: _vm.$processStyle(undefined),
-      style: (_vm.$processStyle(undefined))
-    }, [_vm._v(_vm._s(num))])])])
-  }), 1)], 1)
+      style: (_vm.$processStyle(undefined)),
+      attrs: {
+        "resize": "cover",
+        "src": img.src
+      }
+    })])
+  }), 0)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

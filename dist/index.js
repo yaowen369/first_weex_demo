@@ -138,22 +138,34 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "panel": {
-    "width": "600",
-    "height": "250",
-    "marginLeft": "75",
-    "marginTop": "35",
-    "marginBottom": "35",
-    "justifyContent": "center",
-    "textAlign": "center",
-    "borderColor": "#FF0000",
-    "borderWidth": "1",
-    "backgroundColor": "rgba(162,217,192,0.2)"
+  "image": {
+    "width": "700",
+    "height": "700"
   },
-  "list-text": {
-    "borderColor": "#0000FF",
-    "borderWidth": "1",
-    "textAlign": "center"
+  "slider": {
+    "marginTop": "25",
+    "marginLeft": "25",
+    "width": "700",
+    "height": "700",
+    "borderWidth": "2",
+    "borderStyle": "solid",
+    "borderColor": "#41b883"
+  },
+  "frame": {
+    "width": "700",
+    "height": "700",
+    "position": "relative"
+  },
+  "indicator": {
+    "height": "700",
+    "width": "700",
+    "itemColor": "#FFFFFF",
+    "itemSelectedColor": "#FF0000",
+    "itemSize": "20",
+    "position": "absolute",
+    "top": "300",
+    "left": "0",
+    "backgroundColor": "#0000FF"
   }
 }
 
@@ -202,9 +214,21 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule("modal");
-var stream = weex.requireModule("stream");
 
 exports.default = {
   name: "App",
@@ -214,34 +238,19 @@ exports.default = {
     return {
       // vue的图标
 
-      lists: []
+      imageList: [{
+        src: "https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg"
+      }, {
+        src: "https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg"
+      }, {
+        src: "https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg"
+      }]
     };
   },
-  created: function created() {
-    var _this = this;
-
-    var url = "https://autumnfish.cn/api/joke/list?num=3";
-
-    console.log('进入 create() 方法');
-
-    this.getNews(url, function (res) {
-      modal.toast({ message: '请求成功' });
-      console.log(res);
-      _this.lists = res.data.jokes;
-      console.log(res.data.jokes);
-    });
-  },
-
 
   methods: {
-    getNews: function getNews(myurl, callback) {
-      console.log("进入 getNews 方法");
-
-      return stream.fetch({
-        method: 'GET',
-        type: 'json',
-        url: myurl
-      }, callback);
+    onchange: function onchange(index) {
+      // modal.toast({message:index});
     }
   }
 };
@@ -253,18 +262,28 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
-  }, [_c('list', _vm._l((_vm.lists), function(num) {
-    return _c('cell', {
-      appendAsTree: true,
+  }, [_c('slider', {
+    staticClass: ["slider"],
+    attrs: {
+      "interval": "3000",
+      "autoPlay": "true"
+    },
+    on: {
+      "change": _vm.onchange
+    }
+  }, [_vm._l((_vm.imageList), function(img) {
+    return _c('div', {
+      staticClass: ["frame"]
+    }, [_c('image', {
+      staticClass: ["image"],
       attrs: {
-        "append": "tree"
+        "resize": "cover",
+        "src": img.src
       }
-    }, [_c('div', {
-      staticClass: ["panel"]
-    }, [_c('text', {
-      staticClass: ["list-text"]
-    }, [_vm._v(_vm._s(num))])])])
-  }))])
+    })])
+  }), _c('indicator', {
+    staticClass: ["indicator"]
+  })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
