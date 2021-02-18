@@ -138,34 +138,23 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "image": {
-    "width": "700",
-    "height": "700"
+  "wrapper": {
+    "justifyContent": "center"
   },
-  "slider": {
-    "marginTop": "25",
-    "marginLeft": "25",
-    "width": "700",
-    "height": "700",
+  "button": {
+    "width": "450",
+    "marginTop": "30",
+    "marginLeft": "150",
+    "paddingTop": "20",
+    "paddingBottom": "20",
     "borderWidth": "2",
-    "borderStyle": "solid",
-    "borderColor": "#41b883"
+    "borderColor": "#dddddd",
+    "backgroundColor": "#f5f5f5"
   },
-  "frame": {
-    "width": "700",
-    "height": "700",
-    "position": "relative"
-  },
-  "indicator": {
-    "height": "700",
-    "width": "700",
-    "itemColor": "#FFFFFF",
-    "itemSelectedColor": "#FF0000",
-    "itemSize": "20",
-    "position": "absolute",
-    "top": "300",
-    "left": "0",
-    "backgroundColor": "#0000FF"
+  "text": {
+    "fontSize": "60",
+    "color": "#666666",
+    "textAlign": "center"
   }
 }
 
@@ -179,17 +168,6 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -260,31 +238,19 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
-  }, [_c('slider', {
-    staticClass: ["slider"],
+  }, [_c('a', {
+    staticClass: ["button"],
     attrs: {
-      "interval": "3000",
-      "autoPlay": "true"
-    },
-    on: {
-      "change": _vm.onchange
+      "href": "http://192.168.3.3:8081/src/lunbotu.js"
     }
-  }, [_vm._l((_vm.imageList), function(img) {
-    return _c('div', {
-      staticClass: ["frame"]
-    }, [_c('image', {
-      staticClass: ["image"],
-      attrs: {
-        "resize": "cover",
-        "src": img.src
-      }
-    })])
-  }), _c('indicator', {
-    staticClass: ["indicator"]
-  })], 2)])
-},staticRenderFns: []}
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v("跳转轮播图2")])])])
+}]}
 module.exports.render._withStripped = true
 
 /***/ })
