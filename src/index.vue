@@ -1,46 +1,35 @@
 <template>
   <div class="wrapper">
-    <slider class="slider" interval="3000" auto-play="true" @change="onchange">
-      <div class="frame" v-for="img in imageList">
-        <image class="image" resize="cover" :src="img.src"></image>
-      </div>
-      <indicator class="indicator"></indicator>
-    </slider>
+    <a
+      class="button"
+      href="http://192.168.3.3:8081/src/lunbotu.js"
+    >
+      <text class="text">跳转轮播图2</text>
+    </a>
   </div>
 </template>
 
 <style scoped>
-.image {
-  width: 700px;
-  height: 700px;
+.wrapper {
+  justify-content: center;
 }
 
-.slider {
-  margin-top: 25px;
-  margin-left: 25px;
-  width: 700px;
-  height: 700px;
+.button {
+  width: 450px;
+  margin-top: 30px;
+  margin-left: 150px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-width: 2px;
-  border-style: solid;
-  border-color: #41b883;
+  border-style: groove;
+  border-color: #dddddd;
+  background-color: #f5f5f5;
 }
 
-.frame {
-  width: 700px;
-  height: 700px;
-  position: relative;
-}
-
-.indicator {
-  height: 700px;
-  width: 700px;
-  item-color: white;
-  item-selected-color: red;
-  item-size: 20px;
-  position: absolute;
-  top: 300px;
-  left: 0px;
-  background-color: blue;
+.text {
+  font-size: 60px;
+  color: #666666;
+  text-align: center;
 }
 </style>
 
