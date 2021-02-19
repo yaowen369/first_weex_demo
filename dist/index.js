@@ -138,25 +138,10 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "holder": {
-    "paddingTop": "20",
-    "paddingRight": "20",
-    "paddingBottom": "20",
-    "paddingLeft": "20"
-  },
-  "btn": {
-    "paddingTop": "20",
-    "paddingRight": "20",
-    "paddingBottom": "20",
-    "paddingLeft": "20",
-    "backgroundColor": "#0088fb",
-    "marginBottom": "20"
-  },
-  "btn-text": {
-    "color": "#ffffff"
-  },
-  "block": {
-    "height": "1500"
+  "box": {
+    "width": "250",
+    "height": "250",
+    "backgroundColor": "#dddddd"
   }
 }
 
@@ -177,55 +162,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule("modal");
-
-var toast = function toast(message) {
-  modal.toast({
-    message: message,
-    duration: 1
-  });
-};
+var animation = weex.requireModule("animation");
 
 exports.default = {
   name: "App",
@@ -236,17 +175,20 @@ exports.default = {
   },
 
   methods: {
-    handleClick: function handleClick(e) {
-      toast(e.timestamp + " :click");
-    },
-    handleLongPress: function handleLongPress(e) {
-      toast(e.timestamp + " : long click");
-    },
-    handleAppear: function handleAppear(e, id) {
-      toast("\n          " + e.timestamp + "\n          " + id + " appear\n          " + e.direction + "\n        ");
-    },
-    handleDisappear: function handleDisappear(e, id) {
-      toast("\n        " + e.timestamp + "\n        " + id + " disappear\n        " + e.direction + "\n      ");
+    move: function move() {
+      var testEl = this.$refs.test;
+      animation.transition(testEl, {
+        styles: {
+          backgroundColor: "#FF0000",
+          transform: "translate(250px, 100px)",
+          transformOrigin: "center center"
+        },
+        duration: 2000,
+        timingFunction: "ease",
+        delay: 2000
+      }, function () {
+        modal.toast({ message: "animation finish." });
+      });
     }
   }
 };
@@ -256,49 +198,15 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', {
-    staticClass: ["holder"]
+  return _c('div', {
+    staticClass: ["wrapper"]
   }, [_c('div', {
-    staticClass: ["btn"],
+    ref: "test",
+    staticClass: ["box"],
     on: {
-      "click": _vm.handleClick
+      "click": _vm.move
     }
-  }, [_c('text', {
-    staticClass: ["btn-text"]
-  }, [_vm._v("click")])]), _c('div', {
-    staticClass: ["btn"],
-    on: {
-      "longpress": _vm.handleLongPress
-    }
-  }, [_c('text', {
-    staticClass: ["btn-text"]
-  }, [_vm._v("longpress")])]), _c('div', {
-    staticClass: ["btn", "block"],
-    on: {
-      "appear": function (e) {
-        _vm.handleAppear(e, 'block1');
-      },
-      "disappear": function (e) {
-        _vm.handleDisappear(e, 'block1');
-      }
-    }
-  }, [_c('text', {
-    staticClass: ["btn-text"]
-  }, [_vm._v("block1")])]), _c('div', {
-    staticClass: ["btn", "block"],
-    on: {
-      "appear": function (e) {
-        _vm.handleAppear(e, 'block2');
-      },
-      "disappear": function (e) {
-        _vm.handleDisappear(e, 'block2')
-      }
-    }
-  }, [_c('text', {
-    attrs: {
-      "text": "btn-class"
-    }
-  }, [_vm._v("block2")])])])
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
