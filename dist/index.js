@@ -138,15 +138,25 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "wrapper": {
-    "justifyContent": "center"
+  "holder": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20"
   },
-  "web": {
-    "marginLeft": "75",
-    "width": "600",
-    "height": "750",
-    "borderWidth": "2",
-    "borderColor": "#41B883"
+  "btn": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20",
+    "backgroundColor": "#0088fb",
+    "marginBottom": "20"
+  },
+  "btn-text": {
+    "color": "#ffffff"
+  },
+  "block": {
+    "height": "1500"
   }
 }
 
@@ -188,8 +198,34 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule("modal");
+
+var toast = function toast(message) {
+  modal.toast({
+    message: message,
+    duration: 1
+  });
+};
 
 exports.default = {
   name: "App",
@@ -200,17 +236,18 @@ exports.default = {
   },
 
   methods: {
-    onchange: function onchange(index) {
-      // modal.toast({message:index});
+    handleClick: function handleClick(e) {
+      toast(e.timestamp + " :click");
     },
-    onstart: function onstart() {
-      modal.toast({ message: 'onstart() ' });
+    handleLongPress: function handleLongPress(e) {
+      toast(e.timestamp + " : long click");
     },
-
-    onfinish: function onfinish(event) {
-      modal.toast({ message: 'onfinish() ' });
+    handleAppear: function handleAppear(e, id) {
+      toast("\n          " + e.timestamp + "\n          " + id + " appear\n          " + e.direction + "\n        ");
     },
-    onerror: function onerror(event) {}
+    handleDisappear: function handleDisappear(e, id) {
+      toast("\n        " + e.timestamp + "\n        " + id + " disappear\n        " + e.direction + "\n      ");
+    }
   }
 };
 
@@ -219,19 +256,49 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["wrapper"]
-  }, [_c('web', {
-    staticClass: ["web"],
-    attrs: {
-      "src": "https://www.cnblogs.com/yaoxiaowen"
-    },
+  return _c('scroller', {
+    staticClass: ["holder"]
+  }, [_c('div', {
+    staticClass: ["btn"],
     on: {
-      "pagestart": _vm.onstart,
-      "pagefinish": _vm.onfinish,
-      "error": _vm.onerror
+      "click": _vm.handleClick
     }
-  })])
+  }, [_c('text', {
+    staticClass: ["btn-text"]
+  }, [_vm._v("click")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "longpress": _vm.handleLongPress
+    }
+  }, [_c('text', {
+    staticClass: ["btn-text"]
+  }, [_vm._v("longpress")])]), _c('div', {
+    staticClass: ["btn", "block"],
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block1');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block1');
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["btn-text"]
+  }, [_vm._v("block1")])]), _c('div', {
+    staticClass: ["btn", "block"],
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block2');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block2')
+      }
+    }
+  }, [_c('text', {
+    attrs: {
+      "text": "btn-class"
+    }
+  }, [_vm._v("block2")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

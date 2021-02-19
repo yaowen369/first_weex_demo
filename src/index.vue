@@ -1,55 +1,87 @@
 <template>
-  <div class="wrapper">
-    <!-- <a
-      class="button"
-      href="http://192.168.3.3:8081/src/lunbotu.js"
-    >
-      <text class="text">跳转轮播图2</text>
-    </a> -->
-    <web src="https://www.cnblogs.com/yaoxiaowen" class="web" @pagestart="onstart" @pagefinish="onfinish" @error="onerror"/>
-  </div>
+  <scroller class="holder">
+    <div class="btn" @click="handleClick">
+      <text class="btn-text">click</text>
+    </div>
+
+    <div class="btn"  @longpress="handleLongPress">
+      <text class="btn-text">longpress</text>
+    </div>
+
+    <div class="btn block"
+      @appear="(e) => {handleAppear(e, 'block1');}"
+      @disappear="(e) => { handleDisappear(e, 'block1'); }"
+      >
+        <text class="btn-text">block1</text>
+      </div>
+
+    <div class="btn block"
+      @appear="(e) => {handleAppear(e, 'block2'); }"
+      @disappear="(e) => {handleDisappear(e, 'block2')}"
+      >
+      <text text="btn-class">block2</text>
+    </div>
+
+  </scroller>
 </template>
 
 <style scoped>
-.wrapper {
-  justify-content: center;
-}
+  .holder {
+    padding: 20px;
+  }
 
-.web{
-  margin-left: 75px;
-  width: 600px;
-  height: 750px;
-  border-width: 2px;
-  border-style: double;
-  border-color: #41B883;
-}
+  .btn{
+    padding: 20px;
+    background-color: #0088fb;
+    margin-bottom: 20px;
+  }
 
+  .btn-text {
+    color: #fff;
+  }
+
+  .block {
+    height: 1500px;
+  }
 </style>
 
 <script>
 const modal = weex.requireModule("modal");
+
+const toast = message => {
+  modal.toast({
+    message,
+    duration: 1,
+  });
+}
 
 export default {
   name: "App",
   components: {},
 
   data() {
-    return {
-      
-    };
+    return {};
   },
   methods: {
-    onchange: function (index) {
-      // modal.toast({message:index});
+    handleClick(e){
+      toast(e.timestamp + " :click");
     },
-    onstart(){
-      modal.toast({message:'onstart() '});
+    handleLongPress(e){
+      toast(e.timestamp + " : long click");
     },
-    onfinish:function(event){
-      modal.toast({message:'onfinish() '});
+    handleAppear(e, id){
+        toast(`
+          ${e.timestamp}
+          ${id} appear
+          ${e.direction}
+        `);
     },
-    onerror:function(event){
-
+    handleDisappear(e, id){
+      toast(`
+        ${e.timestamp}
+        ${id} disappear
+        ${e.direction}
+      `);
     }
   },
 };

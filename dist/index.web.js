@@ -21573,7 +21573,7 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.image[data-v-28e1950c]{\n  width: 700px;\n  height: 700px;\n}\n.slider[data-v-28e1950c] {\n  margin-top: 25px;\n  margin-left: 25px;\n  width: 700px;\n  height: 700px;\n  border-width: 2px;\n  border-style: solid;\n  border-color: #41B883;\n}\n.frame[data-v-28e1950c] {\n  width: 700px;\n  height: 700px;\n  position: relative;\n}\n", ""]);
+exports.push([module.i, "\n.holder[data-v-28e1950c] {\n  padding: 20px;\n}\n.btn[data-v-28e1950c]{\n  padding: 20px;\n  background-color: #0088fb;\n  margin-bottom: 20px;\n}\n.btn-text[data-v-28e1950c] {\n  color: #fff;\n}\n.block[data-v-28e1950c] {\n  height: 1500px;\n}\n", ""]);
 
 // exports
 
@@ -21623,22 +21623,50 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule("modal");
+
+var toast = function toast(message) {
+  modal.toast({
+    message: message,
+    duration: 1
+  });
+};
 
 exports.default = {
   name: "App",
   components: {},
 
   data: function data() {
-    return {
-      // vue的图标
-
-      imageList: [{ src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg' }]
-    };
+    return {};
   },
 
-  methods: {}
+  methods: {
+    handleClick: function handleClick(e) {
+      toast(e.timestamp + " :click");
+    },
+    handleLongPress: function handleLongPress(e) {
+      toast(e.timestamp + " : long click");
+    },
+    handleAppear: function handleAppear(e, id) {
+      toast("\n          " + e.timestamp + "\n          " + id + " appear\n          " + e.direction + "\n        ");
+    },
+    handleDisappear: function handleDisappear(e, id) {
+      toast("\n        " + e.timestamp + "\n        " + id + " disappear\n        " + e.direction + "\n      ");
+    }
+  }
 };
 
 /***/ }),
@@ -21646,33 +21674,67 @@ exports.default = {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "wrapper",
+  return _c('scroller', {
+    staticClass: "holder",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('slider', {
-    staticClass: "slider",
+  }, [_c('div', {
+    staticClass: "btn",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "click": _vm.handleClick
+    }
+  }, [_c('text', {
+    staticClass: "btn-text",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("click")])]), _vm._v(" "), _c('div', {
+    staticClass: "btn",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "longpress": _vm.handleLongPress
+    }
+  }, [_c('text', {
+    staticClass: "btn-text",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("longpress")])]), _vm._v(" "), _c('div', {
+    staticClass: "btn block",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block1');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block1');
+      }
+    }
+  }, [_c('text', {
+    staticClass: "btn-text",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("block1")])]), _vm._v(" "), _c('div', {
+    staticClass: "btn block",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block2');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block2')
+      }
+    }
+  }, [_c('text', {
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
     attrs: {
-      "interval": "3000",
-      "auto-play": "true"
+      "text": "btn-class"
     }
-  }, _vm._l((_vm.imageList), function(img) {
-    return _c('div', {
-      staticClass: "frame",
-      staticStyle: _vm.$processStyle(undefined),
-      style: (_vm.$processStyle(undefined))
-    }, [_c('image', {
-      staticClass: "image",
-      staticStyle: _vm.$processStyle(undefined),
-      style: (_vm.$processStyle(undefined)),
-      attrs: {
-        "resize": "cover",
-        "src": img.src
-      }
-    })])
-  }), 0)], 1)
+  }, [_vm._v("block2")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
