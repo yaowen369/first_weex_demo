@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,45 +71,37 @@
 /* 2 */,
 /* 3 */,
 /* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _topheader = __webpack_require__(14);
+var _indexP = __webpack_require__(6);
 
-var _topheader2 = _interopRequireDefault(_topheader);
+var _indexP2 = _interopRequireDefault(_indexP);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_topheader2.default.el = '#root';
-new Vue(_topheader2.default);
+_indexP2.default.el = '#root';
+new Vue(_indexP2.default);
 
 /***/ }),
-/* 14 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(15)
+__vue_styles__.push(__webpack_require__(7)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(16)
+__vue_exports__ = __webpack_require__(8)
 
 /* template */
-var __vue_template__ = __webpack_require__(17)
+var __vue_template__ = __webpack_require__(9)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -121,10 +113,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/components/topheader.vue"
+__vue_options__.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/backup/index-p14-通用事件.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-b023117c"
+__vue_options__._scopeId = "data-v-4589c892"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -139,34 +131,41 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 15 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = {
-  "topheader": {
-    "backgroundColor": "#FF0000",
-    "paddingTop": "10",
-    "paddingRight": "10",
-    "paddingBottom": "10",
-    "paddingLeft": "10"
+  "holder": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20"
   },
-  "top-text": {
-    "color": "#FFFFFF",
-    "fontSize": "46",
-    "textAlign": "center",
-    "lines": 3
+  "btn": {
+    "paddingTop": "20",
+    "paddingRight": "20",
+    "paddingBottom": "20",
+    "paddingLeft": "20",
+    "backgroundColor": "#0088fb",
+    "marginBottom": "20"
+  },
+  "btn-text": {
+    "color": "#ffffff"
+  },
+  "block": {
+    "height": "1500"
   }
 }
 
 /***/ }),
-/* 16 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -175,22 +174,129 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-exports.default = {};
+var modal = weex.requireModule("modal");
+
+var toast = function toast(message) {
+  modal.toast({
+    message: message,
+    duration: 1
+  });
+};
+
+exports.default = {
+  name: "App",
+  components: {},
+
+  data: function data() {
+    return {};
+  },
+
+  methods: {
+    handleClick: function handleClick(e) {
+      toast(e.timestamp + " :click");
+    },
+    handleLongPress: function handleLongPress(e) {
+      toast(e.timestamp + " : long click");
+    },
+    handleAppear: function handleAppear(e, id) {
+      toast("\n          " + e.timestamp + "\n          " + id + " appear\n          " + e.direction + "\n        ");
+    },
+    handleDisappear: function handleDisappear(e, id) {
+      toast("\n        " + e.timestamp + "\n        " + id + " disappear\n        " + e.direction + "\n      ");
+    }
+  }
+};
 
 /***/ }),
-/* 17 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["topheader"]
+  return _c('scroller', {
+    staticClass: ["holder"]
+  }, [_c('div', {
+    staticClass: ["btn"],
+    on: {
+      "click": _vm.handleClick
+    }
   }, [_c('text', {
-    staticClass: ["top-text"]
-  }, [_vm._v(" P7 自定义组件和text组件2,P7 自定义组件和text组件,3,P7 自定义组件和text组件,4P7 自定义组件和text组件")])])
-}]}
+    staticClass: ["btn-text"]
+  }, [_vm._v("click")])]), _c('div', {
+    staticClass: ["btn"],
+    on: {
+      "longpress": _vm.handleLongPress
+    }
+  }, [_c('text', {
+    staticClass: ["btn-text"]
+  }, [_vm._v("longpress")])]), _c('div', {
+    staticClass: ["btn", "block"],
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block1');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block1');
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["btn-text"]
+  }, [_vm._v("block1")])]), _c('div', {
+    staticClass: ["btn", "block"],
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block2');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block2')
+      }
+    }
+  }, [_c('text', {
+    attrs: {
+      "text": "btn-class"
+    }
+  }, [_vm._v("block2")])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })

@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 31);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -21473,7 +21473,19 @@ module.exports = function listToStyles (parentId, list) {
 /* 16 */,
 /* 17 */,
 /* 18 */,
-/* 19 */
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21491,23 +21503,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _weexVueRender2.default.init(_vue2.default);
 
-var App = __webpack_require__(20);
+var App = __webpack_require__(32);
 new _vue2.default(_vue2.default.util.extend({ el: '#root' }, App));
 
 /***/ }),
-/* 20 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(21)
+  __webpack_require__(33)
 }
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(23),
+  __webpack_require__(35),
   /* template */
-  __webpack_require__(24),
+  __webpack_require__(36),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -21539,13 +21551,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 21 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(22);
+var content = __webpack_require__(34);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -21565,7 +21577,7 @@ if(false) {
 }
 
 /***/ }),
-/* 22 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)(false);
@@ -21573,13 +21585,13 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.holder[data-v-28e1950c] {\n  padding: 20px;\n}\n.btn[data-v-28e1950c]{\n  padding: 20px;\n  background-color: #0088fb;\n  margin-bottom: 20px;\n}\n.btn-text[data-v-28e1950c] {\n  color: #fff;\n}\n.block[data-v-28e1950c] {\n  height: 1500px;\n}\n", ""]);
+exports.push([module.i, "\n.wrapper[data-v-28e1950c]{\n  -ms-flex-pack: end;\n      justify-content: flex-end;\n}\n.group[data-v-28e1950c]{\n  -ms-flex-pack: center;\n      justify-content: center;\n  margin-bottom: 40px;\n  border-width: 1px;\n  border-color: burlywood;\n}\n.label[data-v-28e1950c]{\n  font-size: 40px;\n  color: #888888;\n  border-color: greenyellow;\n  border-width: 1px;\n}\n.title[data-v-28e1950c]{\n  font-size: 80px;\n  color: #41B883;\n}\n.button[data-v-28e1950c]{\n  font-size: 36px;\n  width: 280px;\n  color: #41B883;\n  text-align: center;\n  padding-top: 25px;\n  padding-bottom: 25px;\n  border-width: 2px;\n  border-style: solid;\n  border-color: rgb(162, 217, 192);\n  background-color: rgba(162, 217, 192, 0.2);\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 23 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21617,124 +21629,140 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule("modal");
-
-var toast = function toast(message) {
-  modal.toast({
-    message: message,
-    duration: 1
-  });
-};
+var picker = weex.requireModule("picker");
 
 exports.default = {
   name: "App",
   components: {},
 
   data: function data() {
-    return {};
+    return {
+      value: '',
+      dateValue: '',
+      timeValue: ''
+    };
   },
 
   methods: {
-    handleClick: function handleClick(e) {
-      toast(e.timestamp + " :click");
+    pickDate: function pickDate() {
+      var _this = this;
+
+      picker.pickDate({}, function (event) {
+        if (event.result === 'success') {
+          _this.dateValue = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
+      });
     },
-    handleLongPress: function handleLongPress(e) {
-      toast(e.timestamp + " : long click");
+    pickTime: function pickTime() {
+      var _this2 = this;
+
+      picker.pickTime({}, function (event) {
+        if (event.result === 'success') {
+          _this2.timeValue = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
+      });
     },
-    handleAppear: function handleAppear(e, id) {
-      toast("\n          " + e.timestamp + "\n          " + id + " appear\n          " + e.direction + "\n        ");
-    },
-    handleDisappear: function handleDisappear(e, id) {
-      toast("\n        " + e.timestamp + "\n        " + id + " disappear\n        " + e.direction + "\n      ");
+    pick: function pick() {
+      var _this3 = this;
+
+      picker.pick({
+        items: ['张三', '李四', '王五', '周六']
+      }, function (event) {
+        if (event.result === 'success') {
+          _this3.value = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
+      });
     }
   }
 };
 
 /***/ }),
-/* 24 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', {
-    staticClass: "holder",
+  return _c('div', {
+    staticClass: "wrapper",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
   }, [_c('div', {
-    staticClass: "btn",
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle(undefined)),
-    on: {
-      "click": _vm.handleClick
-    }
-  }, [_c('text', {
-    staticClass: "btn-text",
+    staticClass: "group",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_vm._v("click")])]), _vm._v(" "), _c('div', {
-    staticClass: "btn",
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle(undefined)),
-    on: {
-      "longpress": _vm.handleLongPress
-    }
   }, [_c('text', {
-    staticClass: "btn-text",
+    staticClass: "label",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_vm._v("longpress")])]), _vm._v(" "), _c('div', {
-    staticClass: "btn block",
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle(undefined)),
-    on: {
-      "appear": function (e) {
-        _vm.handleAppear(e, 'block1');
-      },
-      "disappear": function (e) {
-        _vm.handleDisappear(e, 'block1');
-      }
-    }
-  }, [_c('text', {
-    staticClass: "btn-text",
+  }, [_vm._v("index:")]), _vm._v(" "), _c('text', {
+    staticClass: "title",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_vm._v("block1")])]), _vm._v(" "), _c('div', {
-    staticClass: "btn block",
+  }, [_vm._v(_vm._s(_vm.value))])]), _vm._v(" "), _c('div', {
+    staticClass: "group",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_c('text', {
+    staticClass: "button",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
     on: {
-      "appear": function (e) {
-        _vm.handleAppear(e, 'block2');
-      },
-      "disappear": function (e) {
-        _vm.handleDisappear(e, 'block2')
-      }
+      "click": _vm.pick
     }
+  }, [_vm._v("Pick")])]), _vm._v(" "), _c('div', {
+    staticClass: "group",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
   }, [_c('text', {
+    staticClass: "label",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("Date:")]), _vm._v(" "), _c('text', {
+    staticClass: "title",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v(_vm._s(_vm.dateValue))])]), _vm._v(" "), _c('div', {
+    staticClass: "group",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_c('text', {
+    staticClass: "button",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
-    attrs: {
-      "text": "btn-class"
+    on: {
+      "click": _vm.pickDate
     }
-  }, [_vm._v("block2")])])])
+  }, [_vm._v(" Pick Date")])]), _vm._v(" "), _c('div', {
+    staticClass: "group",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_c('text', {
+    staticClass: "label",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("Time:")]), _vm._v(" "), _c('text', {
+    staticClass: "title",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v(_vm._s(_vm.timeValue))])]), _vm._v(" "), _c('div', {
+    staticClass: "group",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_c('text', {
+    staticClass: "button",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "click": _vm.pickTime
+    }
+  }, [_vm._v("Pick Time")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

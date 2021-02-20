@@ -62,25 +62,18 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */
+/******/ ({
+
+/***/ 18:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _index = __webpack_require__(9);
+var _index = __webpack_require__(19);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -90,21 +83,22 @@ _index2.default.el = '#root';
 new Vue(_index2.default);
 
 /***/ }),
-/* 9 */
+
+/***/ 19:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(10)
+__vue_styles__.push(__webpack_require__(20)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(11)
+__vue_exports__ = __webpack_require__(21)
 
 /* template */
-var __vue_template__ = __webpack_require__(12)
+var __vue_template__ = __webpack_require__(22)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -134,19 +128,48 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 10 */
+
+/***/ 20:
 /***/ (function(module, exports) {
 
 module.exports = {
-  "box": {
-    "width": "250",
-    "height": "250",
-    "backgroundColor": "#dddddd"
+  "wrapper": {
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "group": {
+    "justifyContent": "center",
+    "marginBottom": "40",
+    "borderWidth": "1",
+    "borderColor": "#DEB887"
+  },
+  "label": {
+    "fontSize": "40",
+    "color": "#888888",
+    "borderColor": "#ADFF2F",
+    "borderWidth": "1"
+  },
+  "title": {
+    "fontSize": "80",
+    "color": "#41b883"
+  },
+  "button": {
+    "fontSize": "36",
+    "width": "280",
+    "color": "#41b883",
+    "textAlign": "center",
+    "paddingTop": "25",
+    "paddingBottom": "25",
+    "borderWidth": "2",
+    "borderStyle": "solid",
+    "borderColor": "rgb(162,217,192)",
+    "backgroundColor": "rgba(162,217,192,0.2)"
   }
 }
 
 /***/ }),
-/* 11 */
+
+/***/ 21:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -162,53 +185,134 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule("modal");
-var animation = weex.requireModule("animation");
+var picker = weex.requireModule("picker");
 
 exports.default = {
   name: "App",
   components: {},
 
   data: function data() {
-    return {};
+    return {
+      value: "",
+      dateValue: "",
+      timeValue: ""
+    };
   },
 
   methods: {
-    move: function move() {
-      var testEl = this.$refs.test;
-      animation.transition(testEl, {
-        styles: {
-          backgroundColor: "#FF0000",
-          transform: "translate(250px, 100px)",
-          transformOrigin: "center center"
-        },
-        duration: 2000,
-        timingFunction: "ease",
-        delay: 2000
-      }, function () {
-        modal.toast({ message: "animation finish." });
+    pickDate: function pickDate() {
+      var _this = this;
+
+      picker.pickDate({}, function (event) {
+        if (event.result === "success") {
+          _this.dateValue = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
+      });
+    },
+    pickTime: function pickTime() {
+      var _this2 = this;
+
+      picker.pickTime({}, function (event) {
+        if (event.result === "success") {
+          _this2.timeValue = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
+      });
+    },
+    pick: function pick() {
+      var _this3 = this;
+
+      picker.pick({
+        items: ["张三", "李四", "王五", "周六"]
+      }, function (event) {
+        if (event.result === "success") {
+          _this3.value = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
       });
     }
   }
 };
 
 /***/ }),
-/* 12 */
+
+/***/ 22:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
   }, [_c('div', {
-    ref: "test",
-    staticClass: ["box"],
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v("index:")]), _c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.value))])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["button"],
     on: {
-      "click": _vm.move
+      "click": _vm.pick
     }
-  })])
+  }, [_vm._v("Pick")])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v("Date:")]), _c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.dateValue))])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["button"],
+    on: {
+      "click": _vm.pickDate
+    }
+  }, [_vm._v(" Pick Date")])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v("Time:")]), _c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.timeValue))])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["button"],
+    on: {
+      "click": _vm.pickTime
+    }
+  }, [_vm._v("Pick Time")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })
-/******/ ]);
+
+/******/ });

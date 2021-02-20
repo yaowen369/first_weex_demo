@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -21470,16 +21470,7 @@ module.exports = function listToStyles (parentId, list) {
 /* 13 */,
 /* 14 */,
 /* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21497,33 +21488,33 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _weexVueRender2.default.init(_vue2.default);
 
-var App = __webpack_require__(26);
+var App = __webpack_require__(17);
 new _vue2.default(_vue2.default.util.extend({ el: '#root' }, App));
 
 /***/ }),
-/* 26 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(27)
+  __webpack_require__(18)
 }
 var Component = __webpack_require__(6)(
   /* script */
-  __webpack_require__(29),
+  __webpack_require__(20),
   /* template */
-  __webpack_require__(30),
+  __webpack_require__(21),
   /* styles */
   injectStyle,
   /* scopeId */
-  "data-v-0d0f7f9f",
+  "data-v-f6ec6856",
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/components/topheader.vue"
+Component.options.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/backup/index-p14-通用事件.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] topheader.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] index-p14-通用事件.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -21532,9 +21523,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0d0f7f9f", Component.options)
+    hotAPI.createRecord("data-v-f6ec6856", Component.options)
   } else {
-    hotAPI.reload("data-v-0d0f7f9f", Component.options)
+    hotAPI.reload("data-v-f6ec6856", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -21545,23 +21536,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 27 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(28);
+var content = __webpack_require__(19);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(8)("2a4cef88", content, false, {});
+var update = __webpack_require__(8)("78b99e8b", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d0f7f9f\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topheader.vue", function() {
-     var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d0f7f9f\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./topheader.vue");
+   module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f6ec6856\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index-p14-通用事件.vue", function() {
+     var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-f6ec6856\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index-p14-通用事件.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -21571,7 +21562,7 @@ if(false) {
 }
 
 /***/ }),
-/* 28 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)(false);
@@ -21579,20 +21570,20 @@ exports = module.exports = __webpack_require__(7)(false);
 
 
 // module
-exports.push([module.i, "\n.topheader[data-v-0d0f7f9f] {\n    background-color: red;\n    padding: 10px;\n}\n.top-text[data-v-0d0f7f9f]{\n    color:white;\n    font-size: 46px;\n    text-align: center;\n    lines:3\n}\n", ""]);
+exports.push([module.i, "\n.holder[data-v-f6ec6856] {\n  padding: 20px;\n}\n.btn[data-v-f6ec6856]{\n  padding: 20px;\n  background-color: #0088fb;\n  margin-bottom: 20px;\n}\n.btn-text[data-v-f6ec6856] {\n  color: #fff;\n}\n.block[data-v-f6ec6856] {\n  height: 1500px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 29 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 //
 //
@@ -21601,29 +21592,152 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-exports.default = {};
+var modal = weex.requireModule("modal");
+
+var toast = function toast(message) {
+  modal.toast({
+    message: message,
+    duration: 1
+  });
+};
+
+exports.default = {
+  name: "App",
+  components: {},
+
+  data: function data() {
+    return {};
+  },
+
+  methods: {
+    handleClick: function handleClick(e) {
+      toast(e.timestamp + " :click");
+    },
+    handleLongPress: function handleLongPress(e) {
+      toast(e.timestamp + " : long click");
+    },
+    handleAppear: function handleAppear(e, id) {
+      toast("\n          " + e.timestamp + "\n          " + id + " appear\n          " + e.direction + "\n        ");
+    },
+    handleDisappear: function handleDisappear(e, id) {
+      toast("\n        " + e.timestamp + "\n        " + id + " disappear\n        " + e.direction + "\n      ");
+    }
+  }
+};
 
 /***/ }),
-/* 30 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "topheader",
+  return _c('scroller', {
+    staticClass: "holder",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
+  }, [_c('div', {
+    staticClass: "btn",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "click": _vm.handleClick
+    }
   }, [_c('text', {
-    staticClass: "top-text",
+    staticClass: "btn-text",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_vm._v(" P7 自定义组件和text组件2,P7 自定义组件和text组件,3,P7 自定义组件和text组件,4P7 自定义组件和text组件")])])
+  }, [_vm._v("click")])]), _vm._v(" "), _c('div', {
+    staticClass: "btn",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "longpress": _vm.handleLongPress
+    }
+  }, [_c('text', {
+    staticClass: "btn-text",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("longpress")])]), _vm._v(" "), _c('div', {
+    staticClass: "btn block",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block1');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block1');
+      }
+    }
+  }, [_c('text', {
+    staticClass: "btn-text",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined))
+  }, [_vm._v("block1")])]), _vm._v(" "), _c('div', {
+    staticClass: "btn block",
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    on: {
+      "appear": function (e) {
+        _vm.handleAppear(e, 'block2');
+      },
+      "disappear": function (e) {
+        _vm.handleDisappear(e, 'block2')
+      }
+    }
+  }, [_c('text', {
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle(undefined)),
+    attrs: {
+      "text": "btn-class"
+    }
+  }, [_vm._v("block2")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0d0f7f9f", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-f6ec6856", module.exports)
   }
 }
 
