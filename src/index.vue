@@ -1,35 +1,55 @@
 <template>
-  <div class="wrapper">
-    <div class="group">
-      <text class="label">index:</text>
-      <text class="title">{{ value }}</text>
-    </div>
-    <div class="group">
-      <text class="button" @click="pick">Pick</text>
+  <div class="list">
+    <div class="group center">
+      <text class="result"> {{ state }} </text>
     </div>
 
     <div class="group">
-      <text class="label">Date:</text>
-      <text class="title">{{ dateValue }}</text>
-    </div>
-    <div class="group">
-      <text class="button" @click="pickDate"> Pick Date</text>
-    </div>
-
-    <div class="group">
-      <text class="label">Time:</text>
-      <text class="title">{{ timeValue }}</text>
-    </div>
-    <div class="group">
-      <text class="button" @click="pickTime">Pick Time</text>
+      <text class="text" @click="setItem">Set</text>
+      <text class="text" @click="getItem">get</text>
+      <text class="text" @click="removeItem">remove</text>
+      <text class="text" @click="getAll">all</text>
     </div>
   </div>
 </template>
 
 
+<style scoped>
+.group {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  border-color: blue;
+  border-width: 1px;
+}
+
+.text {
+  width: 130px;
+  height: 130px;
+  line-height: 130px;
+  font-size: 30px;
+  text-align: center;
+  border-color: red;
+  border-width: 1px;
+  margin: 10px;
+}
+
+.result{
+  margin: 10px;
+}
+</style>
+
+
 <script>
 const modal = weex.requireModule("modal");
-const picker = weex.requireModule("picker");
+const storage = weex.requireModule("storage");
+const count = 11;
+const key = "key-" + count;
+const value = "value-" + count;
+
+function showToast(str){
+  modal.toast({message:str, duration:3});
+}
 
 export default {
   name: "App",
@@ -37,83 +57,30 @@ export default {
 
   data() {
     return {
-      value: "",
-      dateValue: "",
-      timeValue: "",
+      state: "--",
     };
   },
   methods: {
-    pickDate() {
-      picker.pickDate({}, (event) => {
-        if (event.result === "success") {
-          this.dateValue = event.data;
-        } else {
-          modal.toast({ message: event });
-        }
-      });
+    setItem() {
+      storage.setItem(key, value, (event)=>{
+        showToast("设置 " + event.result);
+      })
     },
-    pickTime() {
-      picker.pickTime({}, (event) => {
-        if (event.result === "success") {
-          this.timeValue = event.data;
-        } else {
-          modal.toast({ message: event });
-        }
-      });
+    getItem() {
+        storage.getItem(key, (event)=>{
+          showToast("获取 " + event.result +"\t 结果为=" + event.data);
+        })
     },
-    pick() {
-      picker.pick(
-        {
-          items: ["张三", "李四", "王五", "周六"],
-        },
-        (event) => {
-          if (event.result === "success") {
-            this.value = event.data;
-          } else {
-            modal.toast({ message: event });
-          }
-        }
-      );
+    removeItem() {
+        StorageManager.removeItem(key, (event)=>{
+          showToast("移除 " + event.result);
+        })
+    },
+    getAll() {
+
     },
   },
 };
 </script>
 
-<style scoped>
-.wrapper {
-  justify-content: center;
-  align-items: center;
-}
 
-.group {
-  justify-content: center;
-  margin-bottom: 40px;
-  border-width: 1px;
-  border-color: burlywood;
-}
-
-.label {
-  font-size: 40px;
-  color: #888888;
-  border-color: greenyellow;
-  border-width: 1px;
-}
-
-.title {
-  font-size: 80px;
-  color: #41b883;
-}
-
-.button {
-  font-size: 36px;
-  width: 280px;
-  color: #41b883;
-  text-align: center;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: rgb(162, 217, 192);
-  background-color: rgba(162, 217, 192, 0.2);
-}
-</style>

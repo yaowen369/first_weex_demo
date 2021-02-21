@@ -62,43 +62,51 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 23);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 23:
+/******/ ([
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _index = __webpack_require__(24);
+var _indexP15Picker = __webpack_require__(11);
 
-var _index2 = _interopRequireDefault(_index);
+var _indexP15Picker2 = _interopRequireDefault(_indexP15Picker);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_index2.default.el = '#root';
-new Vue(_index2.default);
+_indexP15Picker2.default.el = '#root';
+new Vue(_indexP15Picker2.default);
 
 /***/ }),
-
-/***/ 24:
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(25)
+__vue_styles__.push(__webpack_require__(12)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(26)
+__vue_exports__ = __webpack_require__(13)
 
 /* template */
-var __vue_template__ = __webpack_require__(27)
+var __vue_template__ = __webpack_require__(14)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -110,10 +118,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/index.vue"
+__vue_options__.__file = "/Users/yw/code/h5_js_weex/first_weex_demo/src/backup/index-P15-picker模块.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-2964abc9"
+__vue_options__._scopeId = "data-v-92c4dfc8"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -128,42 +136,46 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-
-/***/ 25:
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = {
-  "group": {
-    "flexDirection": "row",
+  "wrapper": {
     "justifyContent": "center",
-    "alignItems": "flex-end",
-    "borderColor": "#0000FF",
+    "alignItems": "center"
+  },
+  "group": {
+    "justifyContent": "center",
+    "marginBottom": "40",
+    "borderWidth": "1",
+    "borderColor": "#DEB887"
+  },
+  "label": {
+    "fontSize": "40",
+    "color": "#888888",
+    "borderColor": "#ADFF2F",
     "borderWidth": "1"
   },
-  "text": {
-    "width": "130",
-    "height": "130",
-    "lineHeight": "130",
-    "fontSize": "30",
-    "textAlign": "center",
-    "borderColor": "#FF0000",
-    "borderWidth": "1",
-    "marginTop": "10",
-    "marginRight": "10",
-    "marginBottom": "10",
-    "marginLeft": "10"
+  "title": {
+    "fontSize": "80",
+    "color": "#41b883"
   },
-  "result": {
-    "marginTop": "10",
-    "marginRight": "10",
-    "marginBottom": "10",
-    "marginLeft": "10"
+  "button": {
+    "fontSize": "36",
+    "width": "280",
+    "color": "#41b883",
+    "textAlign": "center",
+    "paddingTop": "25",
+    "paddingBottom": "25",
+    "borderWidth": "2",
+    "borderStyle": "solid",
+    "borderColor": "rgb(162,217,192)",
+    "backgroundColor": "rgba(162,217,192,0.2)"
   }
 }
 
 /***/ }),
-
-/***/ 26:
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -201,29 +213,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 var modal = weex.requireModule("modal");
-var storage = weex.requireModule("storage");
-var count = 11;
-var key = "key-" + count;
-var value = "value-" + count;
-
-function showToast(str) {
-  modal.toast({ message: str, duration: 3 });
-}
+var picker = weex.requireModule("picker");
 
 exports.default = {
   name: "App",
@@ -231,68 +223,100 @@ exports.default = {
 
   data: function data() {
     return {
-      state: "--"
+      value: "",
+      dateValue: "",
+      timeValue: ""
     };
   },
 
   methods: {
-    setItem: function setItem() {
-      storage.setItem(key, value, function (event) {
-        showToast("设置 " + event.result);
+    pickDate: function pickDate() {
+      var _this = this;
+
+      picker.pickDate({}, function (event) {
+        if (event.result === "success") {
+          _this.dateValue = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
       });
     },
-    getItem: function getItem() {
-      storage.getItem(key, function (event) {
-        showToast("获取 " + event.result + "\t 结果为=" + event.data);
+    pickTime: function pickTime() {
+      var _this2 = this;
+
+      picker.pickTime({}, function (event) {
+        if (event.result === "success") {
+          _this2.timeValue = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
       });
     },
-    removeItem: function removeItem() {
-      StorageManager.removeItem(key, function (event) {
-        showToast("移除 " + event.result);
+    pick: function pick() {
+      var _this3 = this;
+
+      picker.pick({
+        items: ["张三", "李四", "王五", "周六"]
+      }, function (event) {
+        if (event.result === "success") {
+          _this3.value = event.data;
+        } else {
+          modal.toast({ message: event });
+        }
       });
-    },
-    getAll: function getAll() {}
+    }
   }
 };
 
 /***/ }),
-
-/***/ 27:
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["list"]
+    staticClass: ["wrapper"]
   }, [_c('div', {
-    staticClass: ["group", "center"]
-  }, [_c('text', {
-    staticClass: ["result"]
-  }, [_vm._v(" " + _vm._s(_vm.state) + " ")])]), _c('div', {
     staticClass: ["group"]
   }, [_c('text', {
-    staticClass: ["text"],
+    staticClass: ["label"]
+  }, [_vm._v("index:")]), _c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.value))])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["button"],
     on: {
-      "click": _vm.setItem
+      "click": _vm.pick
     }
-  }, [_vm._v("Set")]), _c('text', {
-    staticClass: ["text"],
+  }, [_vm._v("Pick")])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v("Date:")]), _c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.dateValue))])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["button"],
     on: {
-      "click": _vm.getItem
+      "click": _vm.pickDate
     }
-  }, [_vm._v("get")]), _c('text', {
-    staticClass: ["text"],
+  }, [_vm._v(" Pick Date")])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v("Time:")]), _c('text', {
+    staticClass: ["title"]
+  }, [_vm._v(_vm._s(_vm.timeValue))])]), _c('div', {
+    staticClass: ["group"]
+  }, [_c('text', {
+    staticClass: ["button"],
     on: {
-      "click": _vm.removeItem
+      "click": _vm.pickTime
     }
-  }, [_vm._v("remove")]), _c('text', {
-    staticClass: ["text"],
-    on: {
-      "click": _vm.getAll
-    }
-  }, [_vm._v("all")])])])
+  }, [_vm._v("Pick Time")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ })
-
-/******/ });
+/******/ ]);
