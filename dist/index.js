@@ -134,20 +134,31 @@ module.exports = __vue_exports__
 
 module.exports = {
   "wrapper": {
-    "justifyContent": "center",
-    "alignItems": "center"
-  },
-  "button": {
-    "width": "400",
-    "borderWidth": "1",
-    "fontSize": "40",
     "paddingTop": "10",
     "paddingRight": "10",
     "paddingBottom": "10",
-    "paddingLeft": "10",
-    "borderColor": "rgb(0,0,255)",
-    "backgroundColor": "rgba(0,0,255,0.2)",
-    "textAlign": "center"
+    "paddingLeft": "10"
+  },
+  "row": {
+    "flexDirection": "row",
+    "justifyContent": "space-between"
+  },
+  "button": {
+    "width": "150",
+    "height": "100",
+    "lineHeight": "100",
+    "textAlign": "center",
+    "border": "red",
+    "borderWidth": "1",
+    "borderStyle": "solid",
+    "backgroundColor": "rgb(6,6,109)",
+    "color": "#FFFFFF"
+  },
+  "btn-enable": {
+    "opacity": 1
+  },
+  "btn-disable": {
+    "opacity": 0.2
   }
 }
 
@@ -168,29 +179,84 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule("modal");
-var navigator = weex.requireModule("navigator");
+var webview = weex.requireModule("webview");
 
 exports.default = {
   name: "App",
   components: {},
 
   data: function data() {
-    return {};
+    return {
+      pageStart: "",
+      pagefinish: "",
+      error: "",
+      title: "",
+      canGoBack: false,
+      canGoForward: false
+    };
   },
 
   methods: {
-    jump: function jump(event) {
-      console.log("will jump");
-      navigator.push({
-        url: './backup/lunbotu.js',
-        animated: "true"
-      }, function (event) {
-        modal.toast({
-          message: "跳转成功"
-        });
-      });
+    onpagestart: function onpagestart(e) {
+      this.pageStart = e.url;
+    },
+    onpagefinish: function onpagefinish(e) {
+      this.pagefinish = e.url;
+      this.canGoBack = e.canGoBack;
+      this.canGoForward = e.canGoForward;
+      if (e.title) {
+        tihs.title = e.title;
+      }
+    },
+    onerror: function onerror() {},
+    onreceivedtitle: function onreceivedtitle() {},
+    goBack: function goBack() {
+      webview.goBack(this.$refs.webview);
+    },
+    goForward: function goForward() {
+      webview.goForward(this.$refs.webview);
+    },
+    reload: function reload() {
+      webview.reload(this.$refs.webview);
     }
   }
 };
@@ -203,12 +269,51 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
+  }, [_c('web', {
+    ref: "webview",
+    staticStyle: {
+      width: "720px",
+      height: "500px",
+      borderWidth: "1px",
+      borderColor: "red",
+      borderStyle: "solid"
+    },
+    attrs: {
+      "src": "https://cn.vuejs.org/"
+    },
+    on: {
+      "pagestart": _vm.onpagestart,
+      "pagefinish": _vm.onpagefinish,
+      "error": _vm.onerror,
+      "receivedtitle": _vm.onreceivedtitle
+    }
+  }), _c('div', {
+    staticClass: ["row"],
+    staticStyle: {
+      marginTop: "40px"
+    }
   }, [_c('text', {
     staticClass: ["button"],
+    class: [_vm.canGoBack ? 'btn-enable' : 'btn-disable'],
     on: {
-      "click": _vm.jump
+      "click": _vm.goBack
     }
-  }, [_vm._v("Go To Next page")])])
+  }, [_vm._v("←")]), _c('text', {
+    staticClass: ["button"],
+    class: [_vm.canGoForward ? 'btn-eable' : 'btn-disable'],
+    on: {
+      "click": _vm.goForward
+    }
+  }, [_vm._v("→")]), _c('text', {
+    staticClass: ["button", "btn-enable"],
+    on: {
+      "click": _vm.realod
+    }
+  }, [_vm._v("reload")])]), _c('div', {
+    staticStyle: {
+      marginTop: "30px"
+    }
+  }, [_c('text', [_vm._v(" pageStart:" + _vm._s(_vm.pageStart) + " ")]), _c('text', [_vm._v(" pagefinish:" + _vm._s(_vm.pagefinish) + " ")]), _c('text', [_vm._v(" error:" + _vm._s(_vm.error) + " ")]), _c('text', [_vm._v(" title:" + _vm._s(_vm.title) + " ")])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
